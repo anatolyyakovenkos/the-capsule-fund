@@ -4,579 +4,187 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Capsule Fund</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --surface2: #1a1a28;
-      --border: #2a2a3a;
-      --text: #e8e8f0;
-      --text-dim: #8888a0;
-      --accent: #6c5ce7;
-      --accent-glow: #7c6cf7;
-      --gold: #f0c040;
-      --gold-dim: #d4a830;
-      --orange: #e17055;
-      --blue: #74b9ff;
-    }
-
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #0d0d0d;
+      color: #ccc;
+      line-height: 1.6;
     }
+    a { color: #ccc; text-decoration: none; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
-    /* Animated gradient bg */
-    .bg-glow {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(108,92,231,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(240,192,64,0.05) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 40% at 20% 80%, rgba(108,92,231,0.04) 0%, transparent 50%);
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* NAV */
     nav {
       padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: rgba(10,10,15,0.85);
-      backdrop-filter: blur(20px);
-      z-index: 100;
+      border-bottom: 1px solid #1a1a1a;
     }
-    nav .container {
+    nav .wrap {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-    }
-    .logo {
-      display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
     }
-    .logo-icon {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--accent), var(--gold));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
+    nav .name { font-weight: 600; font-size: 0.95rem; color: #fff; }
+    nav .links { display: flex; gap: 24px; font-size: 0.85rem; color: #666; }
+    nav .links a:hover { color: #fff; }
 
-    /* HERO */
     .hero {
-      padding: 100px 0 80px;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--gold);
-      margin-bottom: 28px;
-    }
-    .hero-badge .dot {
-      width: 6px; height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      padding: 80px 0 60px;
     }
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 24px;
-    }
-    .hero h1 .grad {
-      background: linear-gradient(135deg, var(--accent-glow), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
     }
     .hero p {
-      font-size: 1.15rem;
-      color: var(--text-dim);
-      max-width: 600px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
+      font-size: 1rem;
+      color: #777;
+      max-width: 520px;
     }
 
-    /* STATS */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 0 0 80px;
+    .number-row {
+      display: flex;
+      gap: 48px;
+      padding: 40px 0;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
     }
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      text-align: center;
-      transition: border-color 0.3s, transform 0.3s;
+    .number-row .item .val {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
     }
-    .stat-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .stat-num {
-      font-size: 2.4rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-    .stat-num.gold { color: var(--gold); }
-    .stat-num.purple { color: var(--accent-glow); }
-    .stat-num.blue { color: var(--blue); }
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      font-weight: 500;
+    .number-row .item .lbl {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 2px;
     }
 
-    /* PROOF SECTION */
-    .proof {
-      padding: 80px 0;
-      border-top: 1px solid var(--border);
+    section.block {
+      padding: 48px 0;
+      border-bottom: 1px solid #1a1a1a;
     }
-    .proof-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-    .proof-header h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+    section.block h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
       margin-bottom: 12px;
     }
-    .proof-header p {
-      color: var(--text-dim);
-      font-size: 1rem;
-    }
-    .proof-img-wrap {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-    .proof-img-wrap img {
-      width: 100%;
-      display: block;
-    }
-    .proof-img-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      border: 1px solid rgba(108,92,231,0.2);
-      pointer-events: none;
-    }
-    .proof-caption {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-    }
-    .proof-caption strong {
-      color: var(--gold);
+    section.block p {
+      color: #666;
+      font-size: 0.92rem;
+      max-width: 560px;
     }
 
-    /* HOW IT WORKS */
-    .how {
-      padding: 80px 0;
-      border-top: 1px solid var(--border);
+    .proof-img {
+      margin-top: 20px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #1a1a1a;
     }
-    .how h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-align: center;
-      margin-bottom: 48px;
+    .proof-img img { width: 100%; display: block; }
+    .proof-img + .cap {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: #444;
     }
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+    .steps {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
-    .how-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      transition: border-color 0.3s;
-    }
-    .how-card:hover { border-color: var(--accent); }
-    .how-card .num {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-glow);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 14px;
-    }
-    .how-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .how-card p {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    /* SKIN TIERS */
-    .tiers {
-      padding: 80px 0;
-      border-top: 1px solid var(--border);
-    }
-    .tiers h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .tiers .sub {
-      text-align: center;
-      color: var(--text-dim);
-      margin-bottom: 48px;
-    }
-    .tier-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-    }
-    .tier {
-      background: var(--surface);
-      border-radius: 12px;
-      padding: 24px;
-      border-left: 3px solid;
-      transition: transform 0.2s;
-    }
-    .tier:hover { transform: translateY(-2px); }
-    .tier.covert { border-color: #eb4b4b; }
-    .tier.classified { border-color: #d32ce6; }
-    .tier.restricted { border-color: #8847ff; }
-    .tier.milspec { border-color: #4b69ff; }
-    .tier.industrial { border-color: #5e98d9; }
-    .tier h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .tier.covert h4 { color: #eb4b4b; }
-    .tier.classified h4 { color: #d32ce6; }
-    .tier.restricted h4 { color: #8847ff; }
-    .tier.milspec h4 { color: #4b69ff; }
-    .tier.industrial h4 { color: #5e98d9; }
-    .tier .count {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin: 8px 0 4px;
-    }
-    .tier .desc {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-    }
-
-    /* CTA */
-    .cta {
-      padding: 100px 0;
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-    .cta h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-    .cta p {
-      color: var(--text-dim);
-      font-size: 1.05rem;
-      max-width: 500px;
-      margin: 0 auto 36px;
-      line-height: 1.6;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--accent), #8b7cf7);
-      color: #fff;
-      text-decoration: none;
+    .step { display: flex; gap: 12px; }
+    .step .n {
+      color: #444;
+      font-size: 0.85rem;
       font-weight: 600;
-      font-size: 1rem;
-      padding: 14px 32px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 24px;
     }
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(108,92,231,0.3);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      margin-left: 12px;
-    }
-    .btn-outline:hover {
-      border-color: var(--accent);
-      box-shadow: none;
-    }
+    .step .t { font-size: 0.92rem; color: #888; }
+    .step .t strong { color: #ccc; font-weight: 600; }
 
-    /* FOOTER */
     footer {
       padding: 32px 0;
-      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: #333;
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-dim);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .stats { grid-template-columns: 1fr; }
-      .how-grid { grid-template-columns: 1fr; }
-      .tier-list { grid-template-columns: 1fr 1fr; }
-      .nav-links { display: none; }
-    }
-
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.7rem; }
+      .number-row { flex-direction: column; gap: 24px; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-glow"></div>
 
   <nav>
-    <div class="container">
-      <div class="logo">
-        <div class="logo-icon">&#128142;</div>
-        The Capsule Fund
+    <div class="wrap">
+      <div class="name">The Capsule Fund</div>
+      <div class="links">
+        <a href="#proof">Proof</a>
+        <a href="#strategy">Strategy</a>
       </div>
-      <ul class="nav-links">
-        <li><a href="#proof">Proof</a></li>
-        <li><a href="#how">Strategy</a></li>
-        <li><a href="#vault">The Vault</a></li>
-        <li><a href="#cta">Join</a></li>
-      </ul>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Actively Stockpiling
-      </div>
-      <h1>We Built a Stockpile of<br><span class="grad">Every CS:GO Skin</span></h1>
-      <p>The Capsule Fund is a long-term digital asset vault. We've acquired over 100,000 CS:GO skins across every rarity tier &mdash; from Industrial Grade to Covert. A calculated bet on the scarcity of legacy items.</p>
-    </div>
-  </section>
+  <div class="wrap">
 
-  <section class="stats">
-    <div class="container" style="display:contents">
-      <div class="stat-card reveal">
-        <div class="stat-num gold" data-target="100579">0</div>
-        <div class="stat-label">Total Skins Owned</div>
+    <div class="hero">
+      <h1>We stockpiled every CS:GO skin.</h1>
+      <p>A long-term bet on digital scarcity. CS:GO is retired, supply only goes down, and we're holding over 100,000 skins across every rarity.</p>
+    </div>
+
+    <div class="number-row">
+      <div class="item">
+        <div class="val">100,579</div>
+        <div class="lbl">Skins owned</div>
       </div>
-      <div class="stat-card reveal">
-        <div class="stat-num purple" data-target="1200">0</div>
-        <div class="stat-label">Unique Skin Variants</div>
+      <div class="item">
+        <div class="val">Every</div>
+        <div class="lbl">Rarity tier covered</div>
       </div>
-      <div class="stat-card reveal">
-        <div class="stat-num blue" data-target="350">0</div>
-        <div class="stat-label">Collections Covered</div>
+      <div class="item">
+        <div class="val">0</div>
+        <div class="lbl">Skins for sale</div>
       </div>
     </div>
-  </section>
 
-  <section class="proof" id="proof">
-    <div class="container">
-      <div class="proof-header reveal">
-        <h2>Don't Trust, Verify</h2>
-        <p>Our Steam inventory speaks for itself.</p>
+    <section class="block" id="proof">
+      <h2>Proof</h2>
+      <p>Our Steam inventory. 100,579 items and growing.</p>
+      <div class="proof-img">
+        <img src="assets/steam-proof.png" alt="Steam profile showing 100,579 items">
       </div>
-      <div class="proof-img-wrap reveal">
-        <img src="assets/steam-proof.png" alt="Steam Profile showing 100,579 items owned">
-      </div>
-      <p class="proof-caption reveal">Steam Profile &mdash; <strong>100,579 items</strong> and counting</p>
-    </div>
-  </section>
+      <div class="cap">Live Steam profile screenshot</div>
+    </section>
 
-  <section class="how" id="how">
-    <div class="container">
-      <h2 class="reveal">The Strategy</h2>
-      <div class="how-grid">
-        <div class="how-card reveal">
-          <div class="num">01 &mdash; Acquire</div>
-          <h3>Mass Accumulation</h3>
-          <p>We buy every skin on the market &mdash; capsules, cases, weapons, stickers, knives. Every rarity. Every collection. No skin left behind.</p>
+    <section class="block" id="strategy">
+      <h2>Strategy</h2>
+      <p>Simple thesis, long time horizon.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="n">01</div>
+          <div class="t"><strong>Buy everything.</strong> Every skin, every rarity, every collection. Capsules, stickers, weapons, knives.</div>
         </div>
-        <div class="how-card reveal">
-          <div class="num">02 &mdash; Hold</div>
-          <h3>Control Supply</h3>
-          <p>CS:GO skins are finite. Valve retired the game. No new skins from the CS:GO era will ever be created. We hold the supply others will want.</p>
+        <div class="step">
+          <div class="n">02</div>
+          <div class="t"><strong>Hold supply.</strong> Valve retired CS:GO. No new legacy skins will ever exist. Trade-ups permanently destroy lower-tier skins daily.</div>
         </div>
-        <div class="how-card reveal">
-          <div class="num">03 &mdash; Appreciate</div>
-          <h3>Time Is the Catalyst</h3>
-          <p>As trade-ups consume skins and accounts go inactive, supply dwindles permanently. Scarcity compounds. Patience prints.</p>
+        <div class="step">
+          <div class="n">03</div>
+          <div class="t"><strong>Wait.</strong> Supply shrinks every day. Inactive accounts, trade-ups, and bans remove skins from circulation forever.</div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="tiers" id="vault">
-    <div class="container">
-      <h2 class="reveal">The Vault Breakdown</h2>
-      <p class="sub reveal">Skins across every CS:GO rarity tier</p>
-      <div class="tier-list">
-        <div class="tier covert reveal">
-          <h4>Covert</h4>
-          <div class="count">4,200+</div>
-          <div class="desc">Rarest drops. AWP Dragon Lore, AK Fire Serpent, M4A4 Howl.</div>
-        </div>
-        <div class="tier classified reveal">
-          <h4>Classified</h4>
-          <div class="count">12,500+</div>
-          <div class="desc">High-tier weapons, knives, and gloves across all collections.</div>
-        </div>
-        <div class="tier restricted reveal">
-          <h4>Restricted</h4>
-          <div class="count">22,000+</div>
-          <div class="desc">Mid-tier staples. Popular skins with strong trade volume.</div>
-        </div>
-        <div class="tier milspec reveal">
-          <h4>Mil-Spec</h4>
-          <div class="count">35,000+</div>
-          <div class="desc">The backbone. Essential for trade-up contracts. Consumed daily.</div>
-        </div>
-        <div class="tier industrial reveal">
-          <h4>Industrial &amp; Consumer</h4>
-          <div class="count">26,800+</div>
-          <div class="desc">Base-tier skins. Volume play. High burn rate through trade-ups.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <section class="cta" id="cta">
-    <div class="container reveal">
-      <h2>The Stockpile Grows Daily</h2>
-      <p>While others trade skins, we collect them all. Every capsule opened adds to the fund. Every skin retired from circulation makes ours more valuable.</p>
-      <a href="#" class="btn">Get Involved</a>
-      <a href="#proof" class="btn btn-outline">View Proof</a>
-    </div>
-  </section>
+  <footer>&copy; 2026 The Capsule Fund</footer>
 
-  <footer>
-    <div class="container">
-      &copy; 2026 The Capsule Fund. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Counter animation
-    function animateCounters() {
-      document.querySelectorAll('.stat-num[data-target]').forEach(el => {
-        const target = parseInt(el.dataset.target);
-        const duration = 2000;
-        const start = performance.now();
-
-        function update(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.floor(eased * target).toLocaleString();
-          if (progress < 1) requestAnimationFrame(update);
-          else el.textContent = target.toLocaleString();
-        }
-        requestAnimationFrame(update);
-      });
-    }
-
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          animateCounters();
-          statsObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.3 });
-
-    const firstStat = document.querySelector('.stat-card');
-    if (firstStat) statsObserver.observe(firstStat);
-  </script>
 </body>
 </html>
