@@ -12,7 +12,8 @@
       color: #ccc;
       line-height: 1.6;
     }
-    a { color: #ccc; text-decoration: none; }
+    a { color: #ccc; }
+    a:hover { color: #fff; }
     .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
     nav {
@@ -24,13 +25,12 @@
       justify-content: space-between;
       align-items: center;
     }
-    nav .name { font-weight: 600; font-size: 0.95rem; color: #fff; }
-    nav .links { display: flex; gap: 24px; font-size: 0.85rem; color: #666; }
+    nav .name { font-weight: 600; font-size: 0.95rem; color: #fff; text-decoration: none; }
+    nav .links { display: flex; gap: 24px; font-size: 0.85rem; }
+    nav .links a { color: #666; text-decoration: none; }
     nav .links a:hover { color: #fff; }
 
-    .hero {
-      padding: 80px 0 60px;
-    }
+    .hero { padding: 80px 0 60px; }
     .hero h1 {
       font-size: 2.4rem;
       font-weight: 700;
@@ -41,7 +41,7 @@
     .hero p {
       font-size: 1rem;
       color: #777;
-      max-width: 520px;
+      max-width: 560px;
     }
 
     .number-row {
@@ -111,7 +111,6 @@
       margin-top: 16px;
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
     .tier-item {
       display: flex;
@@ -142,6 +141,16 @@
     .faq-item .q { color: #999; font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
     .faq-item .a { color: #555; font-size: 0.88rem; }
 
+    .inv-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #4b69ff;
+      text-decoration: none;
+      border-bottom: 1px solid #4b69ff33;
+    }
+    .inv-link:hover { color: #6d8aff; border-color: #6d8aff55; }
+
     footer {
       padding: 32px 0;
       font-size: 0.75rem;
@@ -161,9 +170,9 @@
     <div class="wrap">
       <div class="name">The Capsule Fund</div>
       <div class="links">
-        <a href="#proof">Proof</a>
-        <a href="#strategy">Strategy</a>
-        <a href="#vault">Vault</a>
+        <a href="#how">How It Works</a>
+        <a href="#inventory">Inventory</a>
+        <a href="#targets">Targets</a>
         <a href="#why">Why</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -173,102 +182,107 @@
   <div class="wrap">
 
     <div class="hero">
-      <h1>We stockpiled every CS:GO skin.</h1>
-      <p>A long-term bet on digital scarcity. CS:GO is retired, supply only goes down, and we're holding over 100,000 skins across every rarity.</p>
+      <h1>We're buying every CS:GO skin.</h1>
+      <p>The Capsule Fund is an automated collection engine. We use the Steam API, x402 payment rails, and Claude AI to instantly buy skins the moment they hit the market. Every rarity. Every collection. Building the largest CS:GO stockpile ever assembled.</p>
     </div>
 
     <div class="number-row">
       <div class="item">
-        <div class="val">100,579</div>
-        <div class="lbl">Skins owned</div>
+        <div class="val">Active</div>
+        <div class="lbl">Collection status</div>
+      </div>
+      <div class="item">
+        <div class="val">24/7</div>
+        <div class="lbl">Automated buying</div>
       </div>
       <div class="item">
         <div class="val">Every</div>
-        <div class="lbl">Rarity tier covered</div>
-      </div>
-      <div class="item">
-        <div class="val">0</div>
-        <div class="lbl">Skins for sale</div>
+        <div class="lbl">Rarity targeted</div>
       </div>
     </div>
 
-    <section class="block" id="proof">
-      <h2>Proof</h2>
-      <p>Our Steam inventory. 100,579 items and growing.</p>
-      <div class="proof-img">
-        <img src="assets/steam-proof.png" alt="Steam profile showing 100,579 items">
-      </div>
-      <div class="cap">Live Steam profile screenshot</div>
-    </section>
-
-    <section class="block" id="strategy">
-      <h2>Strategy</h2>
-      <p>Simple thesis, long time horizon.</p>
+    <section class="block" id="how">
+      <h2>How It Works</h2>
+      <p>Fully automated. No manual buying.</p>
       <div class="steps">
         <div class="step">
           <div class="n">01</div>
-          <div class="t"><strong>Buy everything.</strong> Every skin, every rarity, every collection. Capsules, stickers, weapons, knives.</div>
+          <div class="t"><strong>Steam API scans the market.</strong> Our bot monitors every CS:GO skin listing on the Steam Community Market in real time. New listings are detected within seconds.</div>
         </div>
         <div class="step">
           <div class="n">02</div>
-          <div class="t"><strong>Hold supply.</strong> Valve retired CS:GO. No new legacy skins will ever exist. Trade-ups permanently destroy lower-tier skins daily.</div>
+          <div class="t"><strong>Claude evaluates the buy.</strong> Each listing is passed to Claude AI which evaluates price, rarity, float value, and collection completeness. If it meets our criteria, it triggers a buy.</div>
         </div>
         <div class="step">
           <div class="n">03</div>
-          <div class="t"><strong>Wait.</strong> Supply shrinks every day. Inactive accounts, trade-ups, and bans remove skins from circulation forever.</div>
+          <div class="t"><strong>x402 handles the payment.</strong> Purchases are executed instantly through x402 API payment rails. No delays, no manual wallet top-ups. Fees are managed automatically.</div>
+        </div>
+        <div class="step">
+          <div class="n">04</div>
+          <div class="t"><strong>Skins land in the vault.</strong> Every purchased skin goes straight into our Steam inventory. Verified, catalogued, and held indefinitely.</div>
         </div>
       </div>
     </section>
 
-    <section class="block" id="vault">
-      <h2>Vault Breakdown</h2>
-      <p>Skins held by rarity tier.</p>
+    <section class="block" id="inventory">
+      <h2>Our Inventory</h2>
+      <p>The collection is live and growing. Every skin we acquire goes here.</p>
+      <div class="proof-img">
+        <img src="assets/steam-market.png" alt="Steam Community Market - CS2 cases and skins">
+      </div>
+      <div class="cap">Steam Community Market &mdash; where we source</div>
+      <a class="inv-link" href="https://steamcommunity.com/id/wealthy/" target="_blank" rel="noopener">View our full Steam inventory &rarr;</a>
+    </section>
+
+    <section class="block" id="targets">
+      <h2>Target Breakdown</h2>
+      <p>What we're collecting across every rarity tier.</p>
       <div class="tier-row">
         <div class="tier-item">
           <div class="tier-name covert">Covert</div>
-          <div class="tier-count">4,200+</div>
+          <div class="tier-count">AWP Dragon Lore, AK Fire Serpent, M4A4 Howl</div>
         </div>
         <div class="tier-item">
           <div class="tier-name classified">Classified</div>
-          <div class="tier-count">12,500+</div>
+          <div class="tier-count">Knives, gloves, high-tier weapons</div>
         </div>
         <div class="tier-item">
           <div class="tier-name restricted">Restricted</div>
-          <div class="tier-count">22,000+</div>
+          <div class="tier-count">Popular mid-tier skins with trade volume</div>
         </div>
         <div class="tier-item">
           <div class="tier-name milspec">Mil-Spec</div>
-          <div class="tier-count">35,000+</div>
+          <div class="tier-count">Trade-up fuel &mdash; consumed daily</div>
         </div>
         <div class="tier-item">
           <div class="tier-name industrial">Industrial &amp; Consumer</div>
-          <div class="tier-count">26,800+</div>
+          <div class="tier-count">Volume play, highest burn rate</div>
         </div>
       </div>
     </section>
 
     <section class="block" id="why">
-      <h2>Why CS:GO Skins</h2>
+      <h2>Why This Works</h2>
       <div class="why-grid">
         <div class="why-item">
-          <strong>Valve killed the supply.</strong>
-          <span>CS:GO was retired in September 2023. Legacy skins from the CS:GO era are frozen in time. No more will ever be created.</span>
+          <strong>CS:GO skins are finite.</strong>
+          <span>Valve retired CS:GO in September 2023. Legacy skins are frozen in time. No more will ever be created.</span>
         </div>
         <div class="why-item">
-          <strong>Trade-ups burn inventory daily.</strong>
-          <span>Players destroy 10 lower-tier skins to craft 1 higher-tier skin. This permanently removes supply from circulation every single day.</span>
+          <strong>Trade-ups destroy supply daily.</strong>
+          <span>Players burn 10 lower-tier skins to craft 1 higher-tier skin. Supply permanently shrinks every single day.</span>
         </div>
         <div class="why-item">
-          <strong>Accounts go inactive forever.</strong>
+          <strong>Accounts go dark forever.</strong>
           <span>Bans, lost passwords, abandoned accounts. Millions of skins are locked in accounts that will never trade again.</span>
         </div>
         <div class="why-item">
-          <strong>Demand keeps growing.</strong>
-          <span>CS2 brought a new wave of players. They want the same legacy skins, but there are fewer available every month.</span>
+          <strong>CS2 brought new demand.</strong>
+          <span>A new generation of players wants legacy skins, but there are fewer available every month.</span>
         </div>
         <div class="why-item">
-          <strong>Proven track record.</strong>
-          <span>CS:GO skins have outperformed most traditional assets over the past decade. Early capsules and cases have returned 10-100x.</span>
+          <strong>Automation gives us the edge.</strong>
+          <span>While others manually browse listings, our bot buys 24/7. Claude spots underpriced skins instantly. x402 settles payments in milliseconds.</span>
         </div>
       </div>
     </section>
@@ -277,24 +291,24 @@
       <h2>FAQ</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <div class="q">Why not just buy the expensive skins?</div>
-          <div class="a">We buy everything. Lower-tier skins get consumed through trade-ups, which means even cheap skins become scarce over time. The entire supply chain matters.</div>
+          <div class="q">Do you already have a massive inventory?</div>
+          <div class="a">We're in active collection mode. The stockpile grows every day as our bot runs 24/7. Check our Steam inventory for the current state.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">How does the AI decide what to buy?</div>
+          <div class="a">Claude analyzes every listing against our criteria: price relative to market average, float value, collection gaps, and rarity. If it passes, the buy executes instantly.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">What is x402?</div>
+          <div class="a">x402 is a payment API that enables instant, automated transactions. We use it to fund Steam Market purchases without manual intervention or wallet management.</div>
         </div>
         <div class="faq-item">
           <div class="q">What if Valve floods the market?</div>
-          <div class="a">Valve has never re-released retired skins or capsules. Their entire economy depends on scarcity. Re-releasing items would destroy trust in the Steam marketplace.</div>
+          <div class="a">Valve has never re-released retired skins or capsules. Their economy depends on scarcity. Re-releasing items would destroy trust in the entire Steam marketplace.</div>
         </div>
         <div class="faq-item">
-          <div class="q">How long is the hold?</div>
-          <div class="a">Indefinite. This isn't a flip. The longer we hold, the more supply gets destroyed around us. Time is the edge.</div>
-        </div>
-        <div class="faq-item">
-          <div class="q">Are the skins tradeable?</div>
-          <div class="a">Yes. Every skin sits in a standard Steam inventory. Fully liquid on the Steam Community Market, third-party marketplaces, and peer-to-peer trades.</div>
-        </div>
-        <div class="faq-item">
-          <div class="q">Can I get involved?</div>
-          <div class="a">We're not currently raising. This is a private stockpile. Follow along and build your own position.</div>
+          <div class="q">Can I see the inventory?</div>
+          <div class="a">Yes. Everything is public. <a href="https://steamcommunity.com/id/wealthy/" target="_blank">View our Steam inventory here.</a></div>
         </div>
       </div>
     </section>
