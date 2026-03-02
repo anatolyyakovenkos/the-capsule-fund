@@ -107,6 +107,41 @@
     .step .t { font-size: 0.92rem; color: #888; }
     .step .t strong { color: #ccc; font-weight: 600; }
 
+    .tier-row {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .tier-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .tier-item:last-child { border-bottom: none; }
+    .tier-name { font-size: 0.9rem; font-weight: 600; }
+    .tier-name.covert { color: #eb4b4b; }
+    .tier-name.classified { color: #d32ce6; }
+    .tier-name.restricted { color: #8847ff; }
+    .tier-name.milspec { color: #4b69ff; }
+    .tier-name.industrial { color: #5e98d9; }
+    .tier-count { font-size: 0.9rem; color: #555; font-variant-numeric: tabular-nums; }
+
+    .why-grid {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .why-item strong { color: #ccc; font-weight: 600; display: block; margin-bottom: 4px; font-size: 0.9rem; }
+    .why-item span { color: #555; font-size: 0.85rem; }
+
+    .faq-list { margin-top: 16px; display: flex; flex-direction: column; gap: 24px; }
+    .faq-item .q { color: #999; font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; }
+    .faq-item .a { color: #555; font-size: 0.88rem; }
+
     footer {
       padding: 32px 0;
       font-size: 0.75rem;
@@ -128,6 +163,9 @@
       <div class="links">
         <a href="#proof">Proof</a>
         <a href="#strategy">Strategy</a>
+        <a href="#vault">Vault</a>
+        <a href="#why">Why</a>
+        <a href="#faq">FAQ</a>
       </div>
     </div>
   </nav>
@@ -178,6 +216,85 @@
         <div class="step">
           <div class="n">03</div>
           <div class="t"><strong>Wait.</strong> Supply shrinks every day. Inactive accounts, trade-ups, and bans remove skins from circulation forever.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="vault">
+      <h2>Vault Breakdown</h2>
+      <p>Skins held by rarity tier.</p>
+      <div class="tier-row">
+        <div class="tier-item">
+          <div class="tier-name covert">Covert</div>
+          <div class="tier-count">4,200+</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-name classified">Classified</div>
+          <div class="tier-count">12,500+</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-name restricted">Restricted</div>
+          <div class="tier-count">22,000+</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-name milspec">Mil-Spec</div>
+          <div class="tier-count">35,000+</div>
+        </div>
+        <div class="tier-item">
+          <div class="tier-name industrial">Industrial &amp; Consumer</div>
+          <div class="tier-count">26,800+</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="why">
+      <h2>Why CS:GO Skins</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <strong>Valve killed the supply.</strong>
+          <span>CS:GO was retired in September 2023. Legacy skins from the CS:GO era are frozen in time. No more will ever be created.</span>
+        </div>
+        <div class="why-item">
+          <strong>Trade-ups burn inventory daily.</strong>
+          <span>Players destroy 10 lower-tier skins to craft 1 higher-tier skin. This permanently removes supply from circulation every single day.</span>
+        </div>
+        <div class="why-item">
+          <strong>Accounts go inactive forever.</strong>
+          <span>Bans, lost passwords, abandoned accounts. Millions of skins are locked in accounts that will never trade again.</span>
+        </div>
+        <div class="why-item">
+          <strong>Demand keeps growing.</strong>
+          <span>CS2 brought a new wave of players. They want the same legacy skins, but there are fewer available every month.</span>
+        </div>
+        <div class="why-item">
+          <strong>Proven track record.</strong>
+          <span>CS:GO skins have outperformed most traditional assets over the past decade. Early capsules and cases have returned 10-100x.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <h2>FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="q">Why not just buy the expensive skins?</div>
+          <div class="a">We buy everything. Lower-tier skins get consumed through trade-ups, which means even cheap skins become scarce over time. The entire supply chain matters.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">What if Valve floods the market?</div>
+          <div class="a">Valve has never re-released retired skins or capsules. Their entire economy depends on scarcity. Re-releasing items would destroy trust in the Steam marketplace.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">How long is the hold?</div>
+          <div class="a">Indefinite. This isn't a flip. The longer we hold, the more supply gets destroyed around us. Time is the edge.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">Are the skins tradeable?</div>
+          <div class="a">Yes. Every skin sits in a standard Steam inventory. Fully liquid on the Steam Community Market, third-party marketplaces, and peer-to-peer trades.</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">Can I get involved?</div>
+          <div class="a">We're not currently raising. This is a private stockpile. Follow along and build your own position.</div>
         </div>
       </div>
     </section>
